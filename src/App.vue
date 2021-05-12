@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <a-button type="primary">Button</a-button>
+    <a-select
+      mode="multiple"
+      :default-value="['a1', 'b2']"
+      style="width: 100%"
+      placeholder="Please select"
+      @change="handleChange"
+    >
+      <a-select-option
+        v-for="i in 25"
+        :key="(i + 9).toString(36) + i"
+        :disabled="false"
+      >
+        {{ (i + 9).toString(36) + i }}
+      </a-select-option>
+    </a-select>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  methods: {
+    handleChange(value) {
+      console.log(`selected ${value}`);
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
